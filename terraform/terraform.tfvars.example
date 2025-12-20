@@ -1,0 +1,11 @@
+aws_region         = "us-east-1"
+environment        = "development"
+project_name        = "intel-cloud-performance"
+vpc_cidr           = "10.0.0.0/16"
+availability_zones = ["us-east-1a", "us-east-1b"]
+db_instance_class  = "db.t3.micro"
+db_name            = "performance_db"
+db_username        = "postgres"
+db_password        = "your-secure-password-here"
+redis_node_type    = "cache.t3.micro"
+
