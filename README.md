@@ -451,7 +451,6 @@ Created as a demonstration project showcasing cloud-native development skills an
 
 ## 🙏 Acknowledgments
 
-- Built for Intel Cloud Internship application
 - Demonstrates expertise in cloud platforms, containerization, and DevOps
 - Showcases modern web development practices
 
