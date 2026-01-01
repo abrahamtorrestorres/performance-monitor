@@ -89,8 +89,17 @@ const query = async (text, params) => {
   return pool.query(text, params);
 };
 
+const closeDatabase = async () => {
+  if (pool) {
+    await pool.end();
+    pool = null;
+    logger.info('Database connection pool closed');
+  }
+};
+
 module.exports = {
   initializeDatabase,
-  query
+  query,
+  closeDatabase
 };
 

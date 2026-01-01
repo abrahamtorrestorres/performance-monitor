@@ -103,12 +103,21 @@ const ping = async () => {
   return await client.ping();
 };
 
+const closeRedis = async () => {
+  if (client) {
+    await client.quit();
+    client = null;
+    logger.info('Redis connection closed');
+  }
+};
+
 module.exports = {
   initializeRedis,
   get,
   set,
   setex,
   del,
-  ping
+  ping,
+  closeRedis
 };
 

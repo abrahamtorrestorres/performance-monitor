@@ -1,5 +1,31 @@
 const request = require('supertest');
 const app = require('../server');
+const { initializeDatabase, closeDatabase } = require('../config/database');
+const { closeRedis } = require('../config/redis');
+
+let pool;
+
+beforeAll(async () => {
+  pool = await initializeDatabase();
+  // Ensure the performance_metrics table exists with all required columns
+  await pool.query(`
+    CREATE TABLE IF NOT EXISTS performance_metrics (
+      id VARCHAR(255) PRIMARY KEY,
+      cpu_usage DECIMAL(5,2),
+      memory_usage DECIMAL(5,2),
+      network_throughput DECIMAL(10,2),
+      latency DECIMAL(10,2),
+      timestamp TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+      metadata JSONB,
+      created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+    );
+  `);
+});
+
+afterAll(async () => {
+  await closeDatabase();
+  await closeRedis();
+});
 
 describe('Performance API', () => {
   describe('POST /api/v1/performance/metrics', () => {

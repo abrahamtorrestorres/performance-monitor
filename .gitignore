@@ -40,3 +40,9 @@ build/
 # Docker
 .dockerignore
 
+
+# Python virtual environment
+venv/
+
+# Screenshots
+*.png

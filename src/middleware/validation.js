@@ -1,8 +1,8 @@
 const Joi = require('joi');
 
 const performanceMetricsSchema = Joi.object({
-  cpuUsage: Joi.number().min(0).max(100).optional(),
-  memoryUsage: Joi.number().min(0).max(100).optional(),
+  cpuUsage: Joi.number().min(0).max(100).required(),
+  memoryUsage: Joi.number().min(0).max(100).required(),
   networkThroughput: Joi.number().min(0).optional(),
   latency: Joi.number().min(0).optional(),
   metadata: Joi.object().optional()
