@@ -66,7 +66,7 @@ class SystemMetricsService {
       try {
         // Try to get root filesystem stats (works in most Unix-like systems)
         if (process.platform !== 'win32') {
-          const stats = fs.statSync('/');
+          // const stats = fs.statSync('/');
           // For Docker/Linux, estimate based on available space
           // This is a simplified approach
           const memTotal = os.totalmem();
